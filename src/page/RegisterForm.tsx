@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 // Import komponen UI
 import InputText from "../components/ui/InputText";
 import InputPassword from "../components/ui/InputPassword";
-import InputSelectEvent from "../components/ui/Select";
 import Textarea from "../components/ui/TextArea";
 
 // =======================
@@ -49,7 +48,6 @@ export default function RegisterForm() {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -132,20 +130,6 @@ export default function RegisterForm() {
               error={errors.confirmPassword?.message}
             />
           </div>
-
-          {/* EVENT SELECT */}
-          <InputSelectEvent
-            label="Pilih Event"
-            nama="event"
-            register={register}
-            setValue={setValue}
-            error={errors.event?.message}
-            options={[
-              { label: "Seminar", value: "Seminar" },
-              { label: "Workshop", value: "Workshop" },
-              { label: "Lomba", value: "Lomba" },
-            ]}
-          />
 
           {/* BIO */}
           <Textarea
