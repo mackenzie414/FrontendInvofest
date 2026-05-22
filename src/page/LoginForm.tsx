@@ -40,13 +40,12 @@ export default function LoginForm() {
     const cleanNim = data.nim.trim();
     const cleanPassword = data.password.trim();
 
-    // Login manual sesuai soal
+    // Login manual sesuai ketentuan kredensial tugas
     if (
       cleanNim === "24090045" &&
       cleanPassword === "ilyas123"
     ) {
-      localStorage.setItem("token", "dummy_token");
-
+      // PERBAIKAN: Hapus localStorage manual, serahkan token/session ke fungsi store zustand
       login(cleanNim);
 
       alert("Login berhasil!");

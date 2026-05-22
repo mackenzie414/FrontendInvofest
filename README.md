@@ -6,7 +6,7 @@ Aplikasi web full-stack yang dirancang untuk mengelola data kegiatan festival (*
 ---
 
 ## 🔗 Link Demo Live
-* **Frontend (Vercel):** [https://[nama-proyek-anda].vercel.app](https://vercel.com)
+* **Frontend (Vercel):** [https://pemweb-2-fe-invofest-yrsr.vercel.app/](https://vercel.com)
 * **Backend API (Railway):** [https://pemweb-2backendinvofest-production.up.railway.app](https://pemweb-2backendinvofest-production.up.railway.app)
 
 ---
