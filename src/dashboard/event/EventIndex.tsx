@@ -57,12 +57,9 @@ export default function EventIndex() {
 
     try {
 
-      const response = await fetch(
-        `http://localhost:3000/events/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`https://pemweb-2backendinvofest-production.up.railway.app/events/${id}`, {
+  method: "DELETE",
+});
 
       if (!response.ok) {
         throw new Error("Gagal menghapus event");
