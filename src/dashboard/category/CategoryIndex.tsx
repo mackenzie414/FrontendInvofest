@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-// TYPE
 interface Category {
   id: number;
   name: string;
@@ -9,70 +8,40 @@ interface Category {
 
 export default function CategoryIndex() {
 
-  // STATE
-  const [categories, setCategories] =
-    useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
-  // FETCH CATEGORY
   useEffect(() => {
     fetchCategories();
   }, []);
 
   const fetchCategories = async () => {
-
     try {
-
-      // MENGGUNAKAN ENV VARIABLE UNTUK GET CATEGORIES
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/categories`
       );
-
       const data = await response.json();
-
       setCategories(data);
-
     } catch (error) {
-
       console.log(error);
-
     }
   };
 
-  // DELETE CATEGORY
-  const deleteCategory = async (
-    id: number
-  ) => {
-
-    const confirmDelete = confirm(
-      "Yakin ingin menghapus kategori?"
-    );
-
+  const deleteCategory = async (id: number) => {
+    const confirmDelete = confirm("Yakin ingin menghapus kategori?");
     if (!confirmDelete) return;
 
     try {
-
-      // MENGGUNAKAN ENV VARIABLE UNTUK DELETE CATEGORY
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/categories/${id}`,
-        {
-          method: "DELETE",
-        }
+        { method: "DELETE" }
       );
 
-      if (!response.ok) {
-        throw new Error(
-          "Gagal menghapus kategori"
-        );
-      }
+      if (!response.ok) throw new Error("Gagal menghapus kategori");
 
       alert("Kategori berhasil dihapus!");
-
       fetchCategories();
-
     } catch (error) {
-
       console.log(error);
-
       alert("Gagal menghapus kategori");
     }
   };
@@ -82,119 +51,69 @@ export default function CategoryIndex() {
 
       {/* HEADER */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-200 pb-8 mb-8">
-
         <div>
-
           <h2 className="text-3xl font-bold text-[#7B1D3F]">
             Kategori Event
           </h2>
-
           <p className="text-gray-500">
             Kelola jenis kegiatan festival di sini
           </p>
-
         </div>
-
         <Link
           to="/dashboard/category/create"
           className="bg-[#7B1D3F] text-white font-bold px-8 py-4 rounded-2xl hover:bg-[#5a152e] transition-all shadow-lg text-center"
         >
           + Add New Category
         </Link>
-
       </div>
 
       {/* TABLE */}
       <div className="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
-
         <table className="w-full">
-
           <thead className="bg-[#7B1D3F] text-white">
-
             <tr>
-
-              <th className="px-6 py-4 text-left">
-                ID
-              </th>
-
-              <th className="px-6 py-4 text-left">
-                Nama Kategori
-              </th>
-
-              <th className="px-6 py-4 text-center">
-                Action
-              </th>
-
+              <th className="px-6 py-4 text-left">ID</th>
+              <th className="px-6 py-4 text-left">Nama Kategori</th>
+              <th className="px-6 py-4 text-center">Action</th>
             </tr>
-
           </thead>
 
           <tbody>
-
             {categories.length > 0 ? (
-
               categories.map((category) => (
-
                 <tr
                   key={category.id}
-                  className="border-b border-gray-100"
+                  className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
                 >
-
+                  <td className="px-6 py-4 text-gray-500">{category.id}</td>
+                  <td className="px-6 py-4 font-medium">{category.name}</td>
                   <td className="px-6 py-4">
-                    {category.id}
-                  </td>
-
-                  <td className="px-6 py-4 font-medium">
-                    {category.name}
-                  </td>
-
-                  <td className="px-6 py-4">
-
                     <div className="flex justify-center gap-2">
-
                       <Link
                         to={`/dashboard/category/edit/${category.id}`}
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-xl text-sm"
+                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all"
                       >
                         Edit
                       </Link>
-
                       <button
-                        onClick={() =>
-                          deleteCategory(category.id)
-                        }
-                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-sm"
+                        onClick={() => deleteCategory(category.id)}
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all"
                       >
                         Delete
                       </button>
-
                     </div>
-
                   </td>
-
                 </tr>
-
               ))
-
             ) : (
-
               <tr>
-
-                <td
-                  colSpan={3}
-                  className="text-center py-12 text-gray-400 italic"
-                >
+                <td colSpan={3} className="text-center py-12 text-gray-400 italic">
                   Belum ada data kategori tersedia.
                 </td>
-
               </tr>
-
             )}
-
           </tbody>
-
         </table>
-
       </div>
 
     </div>

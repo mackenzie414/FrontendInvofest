@@ -63,7 +63,7 @@ export default function LoginForm() {
           className="text-left space-y-6"
         >
           <InputText
-            label="NIM"
+            label="Nim"
             nama="nim"
             register={register}
             error={errors.nim?.message}

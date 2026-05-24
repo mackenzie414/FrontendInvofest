@@ -5,7 +5,7 @@ export default function AuthLayouts() {
         <div className="grid grid-cols-2 min-h-screen items-center"> 
         <div className="bg-gray-100 h-screen flex items-center justify-center">
             <img
-                src="https://www.invofest-harkatnegeri.com/assets/text-image.png"
+                src="https://www.invofest-harkatnegeri.com/assets/nav-logo.png"
                 alt=""
                 className="w-96"
                 />

@@ -1,5 +1,6 @@
 import { Outlet, useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
+import { LayoutDashboard, Tag, CalendarDays, Mic2, User, LogOut } from "lucide-react";
 
 export default function DashboardLayouts() {
   const logout = useAuthStore((state) => state.logout);
@@ -13,56 +14,66 @@ export default function DashboardLayouts() {
   };
 
   const menuItems = [
-    { name: "Dashboard", path: "/dashboard" },
-    { name: "Category Event", path: "/dashboard/category" },
-    { name: "Event", path: "/dashboard/event" },
-    { name: "Pembicara", path: "/dashboard/seminar" },
-    { name: "Biodata", path: "/dashboard/biodata" }
+    { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
+    { name: "Category Event", path: "/dashboard/category", icon: Tag },
+    { name: "Event", path: "/dashboard/event", icon: CalendarDays },
+    { name: "Pembicara", path: "/dashboard/seminar", icon: Mic2 },
+    { name: "Biodata", path: "/dashboard/biodata", icon: User },
   ];
 
   return (
     <div className="flex w-full min-h-screen bg-[#F3F4F6]">
       {/* SIDEBAR */}
       <div className="w-64 bg-[#7B1D3F] text-white flex flex-col justify-between sticky top-0 h-screen shadow-xl">
+        
+        {/* LOGO */}
         <div>
-          <div className="p-8 mb-4 border-b border-white/20 pb-4">
-             <h2 className="text-2xl font-bold tracking-tighter italic">
+          <div className="px-6 py-6 border-b border-white/20">
+            <h2 className="text-2xl font-bold tracking-tighter italic">
               INVOFEST
-              </h2>
-                <p className="text-xs text-white/70 tracking-widest">
-                  INFORMATICS VOCATIONAL FESTIVAL
-                </p>
-                  </div>
+            </h2>
+            <p className="text-xs text-white/60 tracking-widest mt-1">
+              INFORMATICS VOCATIONAL FESTIVAL
+            </p>
+          </div>
 
-          <nav className="flex flex-col px-4 gap-2">
-            {menuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`px-4 py-3 rounded-xl font-medium transition-all ${
-                  location.pathname === item.path
-                    ? "bg-white text-[#7B1D3F] shadow-md"
-                    : "hover:bg-[#8B1D3F] text-white/80 hover:text-white"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+          {/* MENU */}
+          <nav className="flex flex-col px-3 gap-1 mt-4">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all ${
+                    isActive
+                      ? "bg-white text-[#7B1D3F] shadow-md"
+                      : "hover:bg-white/10 text-white/80 hover:text-white"
+                  }`}
+                >
+                  <Icon size={18} />
+                  {item.name}
+                </Link>
+              );
+            })}
           </nav>
         </div>
 
-        <div className="p-6">
+        {/* LOGOUT */}
+        <div className="p-4 border-t border-white/20">
           <button
             onClick={handleLogout}
-            className="w-full bg-[#8B1D2E] hover:bg-red-800 text-white py-3 rounded-xl font-bold transition-all shadow-md border border-white/10"
+            className="w-full flex items-center justify-center gap-2 bg-white/10 hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-all"
             type="button"
           >
+            <LogOut size={18} />
             Logout
           </button>
         </div>
       </div>
 
-      {/* MAIN CONTENT AREA */}
+      {/* MAIN CONTENT */}
       <div className="flex-1 overflow-y-auto">
         <Outlet />
       </div>
