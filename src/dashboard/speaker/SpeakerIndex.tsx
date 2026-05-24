@@ -87,7 +87,7 @@ export default function SeminarIndex() {
         <div>
 
           <h1 className="text-3xl font-bold text-[#7B1D3F]">
-            Seminar & Pembicara
+            Pembicara
           </h1>
 
           <p className="text-gray-500 text-sm">
@@ -100,7 +100,7 @@ export default function SeminarIndex() {
           to="/dashboard/seminar/speaker"
           className="bg-[#7B1D3F] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#5a152e] transition-all shadow-lg"
         >
-          + Add New Speaker
+          + Add New Pembicara
         </Link>
 
       </div>

@@ -176,13 +176,13 @@ export default function EventCreate() {
             />
 
             <InputSelectEvent
-              label="Speaker"
+              label="Pembicara"
               nama="speakerId"
               register={register}
               setValue={setValue}
               options={speakers}
               error={errors.speakerId?.message}
-              placeholder="-- Pilih Speaker --"
+              placeholder="-- Pilih Pembicara --"
             />
 
           </div>

@@ -1,11 +1,18 @@
+import { useEffect } from "react";
+
 import { z } from "zod";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useForm } from "react-hook-form";
 
-import { useNavigate } from "react-router-dom";
+import {
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 
 import InputText from "../../components/ui/InputText";
+
 import Button from "../../components/ui/Button";
 
 // TYPE
@@ -16,35 +23,73 @@ type FormData = {
 
 // VALIDATION
 const schema = z.object({
-  name: z.string().min(1, "Nama harus diisi"),
+  name: z.string().min(
+    1,
+    "Nama wajib diisi"
+  ),
 
-  role: z.string().min(1, "Role harus diisi"),
+  role: z.string().min(
+    1,
+    "Role wajib diisi"
+  ),
 });
 
-export default function SpeakerCreate() {
+export default function SpeakerEdit() {
 
   const navigate = useNavigate();
+
+  const { id } = useParams();
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
-  // SUBMIT
+  // FETCH SPEAKER
+  useEffect(() => {
+
+    fetchSpeaker();
+
+  }, []);
+
+  const fetchSpeaker = async () => {
+
+    try {
+
+      // MENGGUNAKAN ENV VARIABLE UNTUK GET SPEAKER DETAIL
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/speakers/${id}`
+      );
+
+      const data = await response.json();
+
+      setValue("name", data.name);
+
+      setValue("role", data.role);
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+  };
+
+  // UPDATE SPEAKER
   const onSubmit = async (
     data: FormData
   ) => {
 
     try {
 
-      // MENGGUNAKAN ENV VARIABLE UNTUK POST SPEAKER BARU
+      // MENGGUNAKAN ENV VARIABLE UNTUK UPDATE SPEAKER (PUT)
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/speakers`,
+        `${import.meta.env.VITE_API_URL}/speakers/${id}`,
         {
-          method: "POST",
+          method: "PUT",
 
           headers: {
             "Content-Type": "application/json",
@@ -56,11 +101,11 @@ export default function SpeakerCreate() {
 
       if (!response.ok) {
         throw new Error(
-          "Gagal menambahkan speaker"
+          "Gagal update pembicara"
         );
       }
 
-      alert("Speaker berhasil ditambahkan!");
+      alert("Pembicara berhasil diupdate!");
 
       navigate("/dashboard/seminar");
 
@@ -68,7 +113,7 @@ export default function SpeakerCreate() {
 
       console.log(error);
 
-      alert("Gagal menambahkan speaker");
+      alert("Gagal update pembicara");
     }
   };
 
@@ -80,11 +125,11 @@ export default function SpeakerCreate() {
         <div className="mb-8">
 
           <h2 className="text-2xl font-bold text-[#7B1D3F]">
-            Tambah Speaker
+            Edit Pembicara
           </h2>
 
           <p className="text-gray-400 text-sm mt-1">
-            Lengkapi informasi narasumber baru
+            Update data pembicara
           </p>
 
         </div>
@@ -95,28 +140,24 @@ export default function SpeakerCreate() {
         >
 
           <InputText
-            label="Nama Lengkap Speaker"
+            label="Nama Pembicara"
             nama="name"
             register={register}
             error={errors.name?.message}
           />
 
           <InputText
-            label="Jabatan / Role"
+            label="Role"
             nama="role"
             register={register}
             error={errors.role?.message}
           />
 
-          <div className="pt-4">
-
-            <Button
-              label="Simpan Speaker"
-              variant="primary"
-              className="w-full bg-[#7B1D3F] hover:bg-[#5a152e] text-white py-4 rounded-2xl font-bold shadow-md transition-all"
-            />
-
-          </div>
+          <Button
+            label="Update Pembicara"
+            variant="primary"
+            className="w-full bg-[#7B1D3F] hover:bg-[#5a152e] text-white py-4 rounded-2xl font-bold shadow-md transition-all"
+          />
 
         </form>
 

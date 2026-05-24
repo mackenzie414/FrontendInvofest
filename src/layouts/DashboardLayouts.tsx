@@ -25,11 +25,14 @@ export default function DashboardLayouts() {
       {/* SIDEBAR */}
       <div className="w-64 bg-[#7B1D3F] text-white flex flex-col justify-between sticky top-0 h-screen shadow-xl">
         <div>
-          <div className="p-8 mb-4">
-            <h2 className="text-2xl font-bold tracking-tighter italic border-b border-maroon-400 pb-4">
+          <div className="p-8 mb-4 border-b border-white/20 pb-4">
+             <h2 className="text-2xl font-bold tracking-tighter italic">
               INVOFEST
-            </h2>
-          </div>
+              </h2>
+                <p className="text-xs text-white/70 tracking-widest">
+                  INFORMATICS VOCATIONAL FESTIVAL
+                </p>
+                  </div>
 
           <nav className="flex flex-col px-4 gap-2">
             {menuItems.map((item) => (

@@ -17,7 +17,7 @@ const Textarea: React.FC<TextareaProps> = ({
             <textarea
                 id={nama}
                 {...register(nama)}
-                placeholder="Tulis bio oi"
+                placeholder="Tulis bio disini"
                 rows={4}
                 className="border border-gray-200 p-2 rounded-2xl resize-none"
             />

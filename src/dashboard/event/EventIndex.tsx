@@ -125,7 +125,7 @@ export default function EventIndex() {
               </th>
 
               <th className="px-6 py-4 text-left">
-                Speaker
+                Pembicara
               </th>
 
               <th className="px-6 py-4 text-left">

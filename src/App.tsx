@@ -14,13 +14,13 @@ import DashboardLayouts from "./layouts/DashboardLayouts";
 import CategoryIndex from "./dashboard/category/CategoryIndex";
 import EventIndex from "./dashboard/event/EventIndex";
 import CategoryCreate from "./dashboard/category/CategoryCreate";
-import SeminarIndex from "./dashboard/seminar/SeminarIndex";
-import SpeakerCreate from "./dashboard/seminar/SpeakerCreate";
+import SeminarIndex from "./dashboard/speaker/SpeakerIndex";
+import SpeakerCreate from "./dashboard/speaker/SpeakerCreate";
 import EventCreate from "./dashboard/event/EventCreate";
 import EventEdit from "./dashboard/event/EventEdit";
 import Biodata from "./dashboard/biodata/Biodata";
 import CategoryEdit from "./dashboard/category/CategoryEdit";
-import SpeakerEdit from "./dashboard/seminar/SpeakerEdit";
+import SpeakerEdit from "./dashboard/speaker/SpeakerEdit";
 
 function App() {
   return (

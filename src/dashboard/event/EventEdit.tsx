@@ -40,7 +40,7 @@ const schema = z.object({
 
   speakerId: z.preprocess(
     (value) => Number(value),
-    z.number().min(1, "Speaker wajib dipilih")
+    z.number().min(1, "Pembicara wajib dipilih")
   ),
 
   dateEvent: z.string().min(1, "Tanggal wajib diisi"),
@@ -243,13 +243,13 @@ export default function EventEdit() {
             />
 
             <InputSelectEvent
-              label="Speaker"
+              label="Pembicara"
               nama="speakerId"
               register={register}
               setValue={setValue}
               options={speakers}
               error={errors.speakerId?.message}
-              placeholder="-- Pilih Speaker --"
+              placeholder="-- Pilih Pembicara --"
             />
 
           </div>
