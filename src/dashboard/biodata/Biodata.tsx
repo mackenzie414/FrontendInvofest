@@ -11,7 +11,7 @@ export default function Biodata() {
 
             {/* FOTO */}
             <img
-              src="/foto.jpeg"
+              src="/profil.jpeg"
               alt="Profile"
               className="w-36 h-36 rounded-full border-4 border-white object-cover shadow-xl"
             />
@@ -20,7 +20,7 @@ export default function Biodata() {
             <div>
 
               <h1 className="text-4xl font-bold">
-                Muhamad Ilyas
+                Fauzy Adytyamaki Madhera
               </h1>
 
               <p className="text-white/80 text-lg mt-2">
@@ -63,7 +63,7 @@ export default function Biodata() {
               </h3>
 
               <p className="text-xl font-bold text-[#7B1D3F]">
-                24090045
+                24090139
               </p>
 
             </div>
@@ -102,7 +102,7 @@ export default function Biodata() {
               </h3>
 
               <p className="text-xl font-bold text-[#7B1D3F] break-all">
-                ilyas09998@gmail.com
+                fauzyaditya414@gmail.com
               </p>
 
             </div>
@@ -128,7 +128,7 @@ export default function Biodata() {
               </h3>
 
               <p className="text-xl font-bold text-[#7B1D3F]">
-                Website Manajemen Event Invofest
+                Website Invofest
               </p>
 
             </div>
@@ -144,7 +144,7 @@ export default function Biodata() {
 
             <p className="text-gray-600 leading-relaxed text-lg">
               Saya adalah mahasiswa D4 Teknik Informatika di Universitas Harkat Negeri.
-              Website ini dibuat sebagai tugas mata kuliah Pemrograman Web
+              Website ini dibuat sebagai tugas UTS Pemrograman Web
               Fullstack menggunakan React, Express, Prisma, dan Zustand
               untuk mengelola data event, kategori, dan pembicara.
             </p>

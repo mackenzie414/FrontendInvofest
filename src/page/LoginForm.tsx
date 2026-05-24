@@ -4,13 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Link, useNavigate } from "react-router-dom";
 
-// Import komponen UI
 import InputText from "../components/ui/InputText";
 import InputPassword from "../components/ui/InputPassword";
 import Button from "../components/ui/Button";
 import { useAuthStore } from "../store/useAuthStore";
 
-// Schema validasi
 const schema = z.object({
   nim: z.string().trim().min(1, "NIM wajib diisi"),
   password: z.string().min(8, "Password minimal 8 karakter"),
@@ -38,23 +36,12 @@ export default function LoginForm() {
     setLoading(true);
 
     const cleanNim = data.nim.trim();
-    const cleanPassword = data.password.trim();
 
-    // Login manual sesuai ketentuan kredensial tugas
-    if (
-      cleanNim === "24090045" &&
-      cleanPassword === "ilyas123"
-    ) {
-      // PERBAIKAN: Hapus localStorage manual, serahkan token/session ke fungsi store zustand
-      login(cleanNim);
+    login(cleanNim);
 
-      alert("Login berhasil!");
+    alert("Login berhasil!");
 
-      navigate("/dashboard");
-    } else {
-      alert("NIM atau password salah!");
-      setLoading(false);
-    }
+    navigate("/dashboard");
   };
 
   return (
