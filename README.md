@@ -3,7 +3,7 @@
 Website frontend untuk manajemen event **Invofest (Informatics Vocational Festival)** yang dibangun menggunakan React + TypeScript + Vite.
 
 ## 🔗 Live Demo
-[https://frontendinvofest.vercel.app](https://frontendinvofest.vercel.app)
+[https://frontend-invofest-one.vercel.app/](https://frontend-invofest-one.vercel.app/)
 
 ## 🛠️ Tech Stack
 - **React** - UI Library
@@ -20,4 +20,4 @@ Website frontend untuk manajemen event **Invofest (Informatics Vocational Festiv
 - CRUD Category Event
 - CRUD Pembicara (Speaker)
 - CRUD Event
-- Integrasi API ke backend Express
+- Integrasi API ke backend 
